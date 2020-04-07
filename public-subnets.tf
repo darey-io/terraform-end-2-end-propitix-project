@@ -5,9 +5,10 @@ resource "aws_subnet" "public-1" {
   map_public_ip_on_launch = true
   availability_zone       = "eu-west-2a"
   depends_on              = [
-      aws_internet_gateway.igw
+      aws_internet_gateway.igw1
   ]
   tags = {
+    "Name"           = "public-1",
     "Managed By" = "Terraform",
     "Resource" = "public-subnet",
     "Project" = "Propitix"
@@ -22,11 +23,12 @@ resource "aws_subnet" "public-2" {
   map_public_ip_on_launch = true
   availability_zone       = "eu-west-2b"
   depends_on              = [
-      aws_internet_gateway.igw
+      aws_internet_gateway.igw2
   ]
   tags = {
-    "Managed By" = "Terraform",
-    "Resource" = "public-subnet",
-    "Project" = "Propitix"
+    "Name"           = "public-2",
+    "Managed By"     = "Terraform",
+    "Resource"       = "public-subnet",
+    "Project"        = "Propitix"
   }
 }

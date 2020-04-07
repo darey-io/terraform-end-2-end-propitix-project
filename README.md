@@ -3,6 +3,8 @@
 
 SEQUENCE 
 
+Branch - Networks
+
 1. Provider 
 2. VPC 
 3. Internet Gateway 
@@ -10,6 +12,18 @@ SEQUENCE
 5. Private Subnets
 6. Nat gateways
 7. Routes/Route Table Associations
+
+Branch - Compute
+
+1. NLB 
+2. Securioty Groups 
+3. Launch Template (Bastion)
+4. Launch Template (webserver)
+
+TODO 
+1. Ensure there is more than 1 subnets for the launch templates
+
+
 
 
 Refactor opportunities
@@ -19,7 +33,7 @@ Refactor opportunities
     "Managed By" = "Terraform"
   }
 
-2. 
+2. Using count and splat for subnets [aws_subnet.public.*.id]
 
 Variables to be created 
 
