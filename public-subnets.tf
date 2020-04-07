@@ -8,6 +8,7 @@ resource "aws_subnet" "public-1" {
       aws_internet_gateway.igw
   ]
   tags = {
+    "Name"           = "public-1",
     "Managed By" = "Terraform",
     "Resource" = "public-subnet",
     "Project" = "Propitix"
@@ -25,8 +26,9 @@ resource "aws_subnet" "public-2" {
       aws_internet_gateway.igw
   ]
   tags = {
-    "Managed By" = "Terraform",
-    "Resource" = "public-subnet",
-    "Project" = "Propitix"
+    "Name"           = "public-2",
+    "Managed By"     = "Terraform",
+    "Resource"       = "public-subnet",
+    "Project"        = "Propitix"
   }
 }
