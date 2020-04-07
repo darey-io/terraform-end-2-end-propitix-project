@@ -5,7 +5,7 @@ resource "aws_subnet" "public-1" {
   map_public_ip_on_launch = true
   availability_zone       = "eu-west-2a"
   depends_on              = [
-      aws_internet_gateway.igw1
+      aws_internet_gateway.igw
   ]
   tags = {
     "Name"           = "public-1",
@@ -23,7 +23,7 @@ resource "aws_subnet" "public-2" {
   map_public_ip_on_launch = true
   availability_zone       = "eu-west-2b"
   depends_on              = [
-      aws_internet_gateway.igw2
+      aws_internet_gateway.igw
   ]
   tags = {
     "Name"           = "public-2",
