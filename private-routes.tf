@@ -8,6 +8,7 @@ resource "aws_route_table" "private-1-rtb" {
     nat_gateway_id = aws_nat_gateway.gw1.id
   }
 
+
   tags = {
         "Name"           = "private-1-route-table",
         "Managed By"     = "Terraform",

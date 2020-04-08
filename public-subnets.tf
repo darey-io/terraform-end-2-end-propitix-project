@@ -7,6 +7,9 @@ resource "aws_subnet" "public-1" {
   depends_on              = [
       aws_internet_gateway.igw
   ]
+    lifecycle {
+      create_before_destroy = true
+  }
   tags = {
     "Name"           = "public-1",
     "Managed By" = "Terraform",
@@ -25,6 +28,9 @@ resource "aws_subnet" "public-2" {
   depends_on              = [
       aws_internet_gateway.igw
   ]
+    lifecycle {
+      create_before_destroy = true
+  }
   tags = {
     "Name"           = "public-2",
     "Managed By"     = "Terraform",

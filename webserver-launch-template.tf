@@ -30,7 +30,7 @@ resource "aws_launch_template" "webserver" {
   network_interfaces {
     associate_public_ip_address = false
     subnet_id = aws_subnet.private-1.id
-    security_groups = [aws_security_group.private-http.id]
+    security_groups = [aws_security_group.private-http.id,aws_security_group.private-ssh.id ]
   }
   placement {
     availability_zone = "eu-west-2a"
