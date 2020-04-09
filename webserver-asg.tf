@@ -2,14 +2,13 @@
 resource "aws_autoscaling_group" "webserver_asc" {
 
   name_prefix                 = "webserver"
-  desired_capacity            = 3
-  max_size                    = 5
+  desired_capacity            = 5
+  max_size                    = 10
   min_size                    = 2
   wait_for_capacity_timeout   = 0
-  availability_zones          = ["eu-west-2a"]
   health_check_type           = "EC2"
   vpc_zone_identifier       = [aws_subnet.private-1.id, aws_subnet.private-2.id]
-  # target_group_arns           = [aws_lb_target_group.ssh-tg.arn]
+  target_group_arns           = [aws_alb_target_group.propitix_http_tg.arn]
   launch_template {
                       id      = aws_launch_template.webserver.id
                       version = "$Latest"
@@ -41,3 +40,19 @@ tags = concat(
 }
 
 
+# Scaling Policy 
+resource "aws_autoscaling_policy" "cpuPolicy" {
+  name                   = "cpu-scaling-policy"
+  adjustment_type        = "ChangeInCapacity"
+  policy_type            = "TargetTrackingScaling"
+  autoscaling_group_name = aws_autoscaling_group.webserver_asc.name
+
+  target_tracking_configuration {
+  predefined_metric_specification {
+    predefined_metric_type = "ASGAverageCPUUtilization"
+  }
+
+  target_value = 90.0
+}
+
+}

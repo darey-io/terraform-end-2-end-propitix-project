@@ -21,23 +21,28 @@ Branch - 1-Networks
 Branch - 2-Compute
 
 
-1. Launch Template (Bastion)
-2. Launch Template (webserver)
-3. Auto Scaling Groups 
-4. Key-Pair 
-5. NLB Listener
-6. NLB-Target Groups
+1. Launch Template (Bastion and Webservers)
+2. Auto Scaling Groups (Bastion and Webservers)
+3. Key-Pair 
+4. NLB Listener (Bastion)
+5. NLB-Target Groups (Bastion)
+6. ALB Listener (Webserver)
+7. ALB-Target Groups (Webserver)
+8. ASG Scaling Policies (Bastion and webserver)
 
 
 TODO 
 
-1. Ensure there is more than 1 subnets for the launch templates
-2. Use remote state
-3. Explore workspaces
-4. Centralise variables 
-5. Use of count for ASG nodes
-6. Launch Templates changes do not take immediate effect on EC2 except there is need for the ASG to read the template and apply the change.
-7. Dependency cycle between listener and target group
+# Ensure there is more than 1 subnets for the launch templates
+# Use remote state
+# Explore workspaces
+# Centralise variables 
+# Use of count for ASG nodes
+# Launch Templates changes do not take immediate effect on EC2 except there is need for the ASG to read the template and apply the change.
+# Dependency cycle between listener and target group
+# Update the Application Load balancer to use SSL
+# Add SNS notifications to ASG
+# Rename nlb file in 1-network branch
 
 
 

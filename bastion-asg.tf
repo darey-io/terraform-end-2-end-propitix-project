@@ -2,8 +2,8 @@
 resource "aws_autoscaling_group" "bastion_asc" {
 
   name_prefix                 = "bastion"
-  desired_capacity            = 6
-  max_size                    = 6
+  desired_capacity            = 1
+  max_size                    = 2
   min_size                    = 1
   wait_for_capacity_timeout   = 0
   vpc_zone_identifier       = [aws_subnet.public-1.id, aws_subnet.public-2.id]
