@@ -3,6 +3,8 @@
 
 SEQUENCE 
 
+Branch - 1-Networks
+
 1. Provider 
 2. VPC 
 3. Internet Gateway 
@@ -10,6 +12,38 @@ SEQUENCE
 5. Private Subnets
 6. Nat gateways
 7. Routes/Route Table Associations
+8. NLB 
+9. Security Groups 
+10. Route Table
+11. Route Table Associations with Subnet
+
+
+Branch - 2-Compute
+
+
+1. Launch Template (Bastion and Webservers)
+2. Auto Scaling Groups (Bastion and Webservers)
+3. Key-Pair 
+4. NLB Listener (Bastion)
+5. NLB-Target Groups (Bastion)
+6. ALB Listener (Webserver)
+7. ALB-Target Groups (Webserver)
+8. ASG Scaling Policies (Bastion and webserver)
+
+
+TODO 
+
+# Ensure there is more than 1 subnets for the launch templates
+# Use remote state
+# Explore workspaces
+# Centralise variables 
+# Use of count for ASG nodes
+# Launch Templates changes do not take immediate effect on EC2 except there is need for the ASG to read the template and apply the change.
+# Dependency cycle between listener and target group
+# Update the Application Load balancer to use SSL
+# Add SNS notifications to ASG
+# Rename nlb file in 1-network branch
+
 
 
 Refactor opportunities
@@ -19,13 +53,14 @@ Refactor opportunities
     "Managed By" = "Terraform"
   }
 
-2. 
+2. Using count and splat for subnets [aws_subnet.public.*.id]
 
 Variables to be created 
 
-#Provider
-1. Region 
+# Provider
+1. Variable for Region 
 
 # VPC 
-1. VPC name 
-2. VPC cidr
+1. Variable for VPC name 
+2. Variable for VPC cidr
+

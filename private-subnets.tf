@@ -8,6 +8,10 @@ resource "aws_subnet" "private-1" {
   cidr_block              = "10.0.2.0/24"
   availability_zone       = "eu-west-2a"
 
+  lifecycle {
+      create_before_destroy = true
+  }
+  
   tags = {
         "Name"           = "private-1",
         "Managed By"     = "Terraform",
@@ -23,6 +27,9 @@ resource "aws_subnet" "private-2" {
   cidr_block              = "10.0.4.0/24"
   availability_zone       = "eu-west-2b"
 
+  lifecycle {
+      create_before_destroy = true
+  }
   tags = {
     "Name"           = "private-2",
     "Managed By"     = "Terraform",

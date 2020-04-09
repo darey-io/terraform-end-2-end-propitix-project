@@ -118,3 +118,25 @@ resource "aws_security_group" "private-http" {
         "Project"        = "Propitix"
     }
 }
+
+
+resource "aws_security_group" "private-ssh" {
+  name   = "Propitix-webserver-SSH-security-group"
+  description = "SSH Access to the webserver server"
+  vpc_id = aws_vpc.propitix_vpc.id
+
+  # SSH access from anywhere
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
+  tags = {
+        "Name"           = "Propitix-webserver-SSH-security-group",
+        "Managed By"     = "Terraform",
+        "Resource"       = "Security Group",
+        "Project"        = "Propitix"
+    }
+}
