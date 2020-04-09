@@ -26,10 +26,6 @@ resource "aws_security_group" "public-bastion" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  lifecycle {
-      create_before_destroy = true
-  }
-
   tags = {
         "Name"           = "Propitix-bastion-security-group",
         "Managed By"     = "Terraform",
@@ -75,9 +71,6 @@ resource "aws_security_group" "public-http" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-    lifecycle {
-      create_before_destroy = true
-  }
 
   tags = {
         "Name"           = "Propitix-public-security-group",
@@ -118,10 +111,6 @@ resource "aws_security_group" "private-http" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  lifecycle {
-      create_before_destroy = true
-  }
-  
   tags = {
         "Name"           = "Propitix-webserver-security-group",
         "Managed By"     = "Terraform",
