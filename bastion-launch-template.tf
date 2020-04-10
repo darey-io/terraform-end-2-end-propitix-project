@@ -27,12 +27,12 @@ resource "aws_launch_template" "bastion" {
   }
   network_interfaces {
     associate_public_ip_address = true
-    subnet_id                   = aws_subnet.public-1.id
+    # subnet_id                   = aws_subnet.public-1.id
     security_groups = [aws_security_group.public-bastion.id]
   }
-  placement {
-    availability_zone = "eu-west-2a"   # We need to be able to handle multiple AZs
-  }
+  # placement {
+  #   availability_zone = "eu-west-2a"   # We need to be able to handle multiple AZs
+  # }
 
   tag_specifications {
     resource_type = "instance"

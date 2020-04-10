@@ -119,7 +119,7 @@ resource "aws_security_group" "private-http" {
     }
 }
 
-
+# SSH Security Group 
 resource "aws_security_group" "private-ssh" {
   name   = "Propitix-webserver-SSH-security-group"
   description = "SSH Access to the webserver server"
@@ -135,6 +135,39 @@ resource "aws_security_group" "private-ssh" {
   
   tags = {
         "Name"           = "Propitix-webserver-SSH-security-group",
+        "Managed By"     = "Terraform",
+        "Resource"       = "Security Group",
+        "Project"        = "Propitix"
+    }
+}
+
+# EFS Security Group 
+resource "aws_security_group" "private-efs" {
+  name   = "Propitix-efs-security-group"
+  description = "EFS Access to the webserver server"
+  vpc_id = aws_vpc.propitix_vpc.id
+
+  # SSH access from anywhere
+  ingress {
+    from_port   = 2049
+    to_port     = 2049
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.2.0/24", "10.0.4.0/24"]
+  }
+  
+    egress {
+    from_port = 2049
+    to_port   = 2049
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      "10.0.0.0/16",
+    ]
+  }
+
+
+  tags = {
+        "Name"           = "Propitix-efs-security-group",
         "Managed By"     = "Terraform",
         "Resource"       = "Security Group",
         "Project"        = "Propitix"

@@ -43,6 +43,8 @@ TODO
 # Update the Application Load balancer to use SSL
 # Add SNS notifications to ASG
 # Rename nlb file in 1-network branch
+# Interpolate efs domain name output into the launch template shell script
+
 
 
 
@@ -64,3 +66,12 @@ Variables to be created
 1. Variable for VPC name 
 2. Variable for VPC cidr
 
+3. Using the count to create 2 EFS mount targets without repeating code.
+
+URGENT 
+1. update 1-network branch with launch templates (Except efs security group should not go in)
+
+
+TRAPS
+
+1. Disable DNS hostname resolution on VPC so that EFS will not easily be mounted on instances 

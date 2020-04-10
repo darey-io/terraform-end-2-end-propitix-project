@@ -29,12 +29,12 @@ resource "aws_launch_template" "webserver" {
   }
   network_interfaces {
     associate_public_ip_address = false
-    subnet_id = aws_subnet.private-1.id
-    security_groups = [aws_security_group.private-http.id,aws_security_group.private-ssh.id ]
+    # subnet_id = aws_subnet.private-1.id #Why do we have just 1 subnet here?
+    security_groups = [aws_security_group.private-http.id,aws_security_group.private-ssh.id, aws_security_group.private-efs.id ]
   }
-  placement {
-    availability_zone = "eu-west-2a"
-  }
+  # placement {
+  #   availability_zone = "eu-west-2a"
+  # }
 
   tag_specifications {
     resource_type = "instance"
