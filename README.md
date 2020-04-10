@@ -44,6 +44,10 @@ TODO
 # Add SNS notifications to ASG
 # Rename nlb file in 1-network branch
 # Interpolate efs domain name output into the launch template shell script
+# Configure propitix software to be deployed 
+# Configure Route 53
+# Configure S3 buckets
+# Configure Cloudfront
 
 
 
